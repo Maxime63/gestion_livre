@@ -11,35 +11,38 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
-
-
-public class AddAuteurServlet extends HttpServlet {
+public class AddLivreServlet extends HttpServlet {
 
 	/***/
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
 		String sNumero = req.getParameter("Num");
 		int valeurNumero = Integer.parseInt(sNumero);
 		Integer valeurEntiere = new Integer(valeurNumero);
 		
-		String sNom = req.getParameter("Nom");
-		String sPrenom = req.getParameter("Prenom");
-		String sDomicile = req.getParameter("Domicile");
+		String sTitre = req.getParameter("Titre");
+		
+		String sPrix = req.getParameter("Prix");
+		double valeurReel = new Double(sPrix);
+		
+		String sDesc = req.getParameter("Desc");
 		
 		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-		Entity monAuteur = new Entity("TAuteur");
-		monAuteur.setProperty("Nom", sNom);
-		monAuteur.setProperty("Prenom", sNom);
-		monAuteur.setProperty("Domicile", sDomicile);
-		monAuteur.setProperty("Numero", valeurEntiere);
+		Entity monLivre = new Entity("TLivre");
+		monLivre.setProperty("Titre", sTitre);
+		monLivre.setProperty("Prix", valeurReel);
+		monLivre.setProperty("Description", sDesc);
+		monLivre.setProperty("Numero", valeurEntiere);
 		
-		datastoreService.put(monAuteur);
+		datastoreService.put(monLivre);
 		
 		resp.setContentType("text/plain");
-		resp.getWriter().println("AddAuteurServlet : Paramètre reçu  = "
-				+sNumero+" / "+sNom+" / "+sPrenom+" / 	"+sDomicile);
+		resp.getWriter().println("AddLivreServlet : Paramètre reçu  = "
+				+sNumero+" / "+sTitre+" / "+sPrix+" / 	"+sDesc);
+
 	}
 }

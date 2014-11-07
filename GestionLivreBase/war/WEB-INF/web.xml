@@ -11,7 +11,23 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>AddAuteur</servlet-name>
 		<url-pattern>/addAuteur</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
+	<servlet>
+		<servlet-name>AddLivre</servlet-name>
+		<servlet-class>com.gestion.livre.servlet.AddLivreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddLivre</servlet-name>
+		<url-pattern>/addLivre</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetAllAuteur</servlet-name>
+		<servlet-class>com.gestion.livre.servlet.GetAllAuteurServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllAuteur</servlet-name>
+		<url-pattern>/getAllAuteur</url-pattern>
+	</servlet-mapping>
+		<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 </web-app>

@@ -24,6 +24,9 @@ public class TLivre {
 	@Persistent
 	private String description;
 	
+	@Persistent
+	private Integer numeroAuteur;
+	
 	public TLivre(Integer numero, String titre, double prix, String description){
 		this.numero = numero;
 		this.titre = titre;
@@ -49,5 +52,9 @@ public class TLivre {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public Integer getNumeroAuteur() {
+		return numeroAuteur;
 	}
 }
