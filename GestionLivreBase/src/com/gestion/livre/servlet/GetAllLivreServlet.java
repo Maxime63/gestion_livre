@@ -14,7 +14,7 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 
-public class GetAllAuteurServlet extends HttpServlet implements ConstanteMetier{
+public class GetAllLivreServlet extends HttpServlet implements ConstanteMetier {
 
 	/***/
 	private static final long serialVersionUID = 1L;
@@ -24,19 +24,21 @@ public class GetAllAuteurServlet extends HttpServlet implements ConstanteMetier{
 			throws ServletException, IOException {
 		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 		
-		Query q = new Query(ENTITY_TAUTEUR);
+		Query q = new Query(ENTITY_TLIVRE);
 		PreparedQuery pq = datastoreService.prepare(q);
 		
 		resp.setContentType("text/plain");
 		
 		for(Entity auteur : pq.asIterable()){
-			String nom = (String) auteur.getProperty(TAUTEUR_COLUMN_NOM);			
-			String prenom = (String) auteur.getProperty(TAUTEUR_COLUMN_PRENOM);			
-			String domicile = (String) auteur.getProperty(TAUTEUR_COLUMN_DOMICILE);
+			String titre = (String) auteur.getProperty(TLIVRE_COLUMN_TITRE);			
+			double prix = (double) auteur.getProperty(TLIVRE_COLUMN_PRIX);			
+			String desc = (String) auteur.getProperty(TLIVRE_COLUMN_DESC);
 			
-			StringBuilder monAuteur = new StringBuilder();
-			monAuteur.append(nom).append(" ").append(prenom).append(" (").append(domicile).append(")");
-			resp.getWriter().println(monAuteur);
+			StringBuilder monLivre = new StringBuilder();
+			monLivre.append(titre).append(" : ").append(prix).append("€\n")
+					 .append(desc);
+			resp.getWriter().println(monLivre);
 		}
+
 	}
 }

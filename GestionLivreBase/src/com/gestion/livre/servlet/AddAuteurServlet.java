@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gestion.livre.metier.ConstanteMetier;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
 
 
-public class AddAuteurServlet extends HttpServlet {
+public class AddAuteurServlet extends HttpServlet implements ConstanteMetier {
 
 	/***/
 	private static final long serialVersionUID = 1L;
@@ -30,11 +31,11 @@ public class AddAuteurServlet extends HttpServlet {
 		String sDomicile = req.getParameter("Domicile");
 		
 		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-		Entity monAuteur = new Entity("TAuteur");
-		monAuteur.setProperty("Nom", sNom);
-		monAuteur.setProperty("Prenom", sNom);
-		monAuteur.setProperty("Domicile", sDomicile);
-		monAuteur.setProperty("Numero", valeurEntiere);
+		Entity monAuteur = new Entity(ENTITY_TAUTEUR);
+		monAuteur.setProperty(TAUTEUR_COLUMN_NOM, sNom);
+		monAuteur.setProperty(TAUTEUR_COLUMN_PRENOM, sNom);
+		monAuteur.setProperty(TAUTEUR_COLUMN_DOMICILE, sDomicile);
+		monAuteur.setProperty(TAUTEUR_COLUMN_NUM, valeurEntiere);
 		
 		datastoreService.put(monAuteur);
 		

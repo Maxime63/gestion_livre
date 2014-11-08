@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gestion.livre.metier.ConstanteMetier;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
-public class AddLivreServlet extends HttpServlet {
+public class AddLivreServlet extends HttpServlet implements ConstanteMetier {
 
 	/***/
 	private static final long serialVersionUID = 1L;
@@ -32,11 +33,11 @@ public class AddLivreServlet extends HttpServlet {
 		String sDesc = req.getParameter("Desc");
 		
 		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-		Entity monLivre = new Entity("TLivre");
-		monLivre.setProperty("Titre", sTitre);
-		monLivre.setProperty("Prix", valeurReel);
-		monLivre.setProperty("Description", sDesc);
-		monLivre.setProperty("Numero", valeurEntiere);
+		Entity monLivre = new Entity(ENTITY_TLIVRE);
+		monLivre.setProperty(TLIVRE_COLUMN_TITRE, sTitre);
+		monLivre.setProperty(TLIVRE_COLUMN_PRIX, valeurReel);
+		monLivre.setProperty(TLIVRE_COLUMN_DESC, sDesc);
+		monLivre.setProperty(TLIVRE_COLUMN_NUM, valeurEntiere);
 		
 		datastoreService.put(monLivre);
 		
