@@ -7,7 +7,7 @@ public interface ConstanteMetier {
 	public static final String TLIVRE_COLUMN_DESC = "Description";	
 	public static final String TLIVRE_COLUMN_NUM = "Numero";	
 
-	public static final String ENTITY_TAUTEUR = "TLivre";
+	public static final String ENTITY_TAUTEUR = "TAuteur";
 	public static final String TAUTEUR_COLUMN_NOM = "Nom";
 	public static final String TAUTEUR_COLUMN_PRENOM = "Prenom";
 	public static final String TAUTEUR_COLUMN_DOMICILE = "Domicile";	
