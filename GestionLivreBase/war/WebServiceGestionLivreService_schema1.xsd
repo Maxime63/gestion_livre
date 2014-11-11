@@ -5,6 +5,20 @@
 
   <xs:element name="createAuteurResponse" type="tns:createAuteurResponse"/>
 
+  <xs:element name="getAllAuteur" type="tns:getAllAuteur"/>
+
+  <xs:element name="getAllAuteurResponse" type="tns:getAllAuteurResponse"/>
+
+  <xs:complexType name="getAllAuteur">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAuteurResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="createAuteur">
     <xs:sequence>
       <xs:element name="arg0" type="xs:int" minOccurs="0"/>

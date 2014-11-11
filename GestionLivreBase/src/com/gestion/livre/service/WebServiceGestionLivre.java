@@ -1,5 +1,7 @@
 package com.gestion.livre.service;
 
+import java.util.List;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
@@ -7,12 +9,16 @@ import com.gestion.livre.metier.ConstanteMetier;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+
 
 @WebService
 public class WebServiceGestionLivre {
+	DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+	
 	@WebMethod
 	public Integer createAuteur(Integer numero, String nom, String prenom, String domicile){
-		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 		Entity monAuteur = new Entity(ConstanteMetier.ENTITY_TAUTEUR);
 		monAuteur.setProperty(ConstanteMetier.TAUTEUR_COLUMN_NOM, nom);
 		monAuteur.setProperty(ConstanteMetier.TAUTEUR_COLUMN_PRENOM, prenom);
@@ -21,8 +27,15 @@ public class WebServiceGestionLivre {
 		
 		datastoreService.put(monAuteur);
 		
-		// !!!!!!!!!! gérer les numéros d'auteur dynamiquement !!!!!!!!!!!
-		
+		System.out.println(monAuteur.getKey());
 		return numero;
+	}
+	
+	@WebMethod
+	public List<String> getAllAuteur(){
+		Query q = new Query(ConstanteMetier.ENTITY_TAUTEUR);
+		PreparedQuery pq = datastoreService.prepare(q);
+			
+		return null;
 	}
 }
