@@ -22,21 +22,6 @@ public class GetAllAuteurServlet extends HttpServlet implements ConstanteMetier{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 		
-		Query q = new Query(ENTITY_TAUTEUR);
-		PreparedQuery pq = datastoreService.prepare(q);
-		
-		resp.setContentType("text/plain");
-		
-		for(Entity auteur : pq.asIterable()){
-			String nom = (String) auteur.getProperty(TAUTEUR_COLUMN_NOM);			
-			String prenom = (String) auteur.getProperty(TAUTEUR_COLUMN_PRENOM);			
-			String domicile = (String) auteur.getProperty(TAUTEUR_COLUMN_DOMICILE);
-			
-			StringBuilder monAuteur = new StringBuilder();
-			monAuteur.append(nom).append(" ").append(prenom).append(" (").append(domicile).append(")");
-			resp.getWriter().println(monAuteur);
-		}
 	}
 }
