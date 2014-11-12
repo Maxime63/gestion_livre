@@ -18,6 +18,54 @@
   <message name="getAllAuteurResponse">
     <part name="parameters" element="tns:getAllAuteurResponse"/>
   </message>
+  <message name="getAuteur">
+    <part name="parameters" element="tns:getAuteur"/>
+  </message>
+  <message name="getAuteurResponse">
+    <part name="parameters" element="tns:getAuteurResponse"/>
+  </message>
+  <message name="deleteAuteur">
+    <part name="parameters" element="tns:deleteAuteur"/>
+  </message>
+  <message name="deleteAuteurResponse">
+    <part name="parameters" element="tns:deleteAuteurResponse"/>
+  </message>
+  <message name="updateAuteur">
+    <part name="parameters" element="tns:updateAuteur"/>
+  </message>
+  <message name="updateAuteurResponse">
+    <part name="parameters" element="tns:updateAuteurResponse"/>
+  </message>
+  <message name="createLivre">
+    <part name="parameters" element="tns:createLivre"/>
+  </message>
+  <message name="createLivreResponse">
+    <part name="parameters" element="tns:createLivreResponse"/>
+  </message>
+  <message name="getAllLivres">
+    <part name="parameters" element="tns:getAllLivres"/>
+  </message>
+  <message name="getAllLivresResponse">
+    <part name="parameters" element="tns:getAllLivresResponse"/>
+  </message>
+  <message name="getLivre">
+    <part name="parameters" element="tns:getLivre"/>
+  </message>
+  <message name="getLivreResponse">
+    <part name="parameters" element="tns:getLivreResponse"/>
+  </message>
+  <message name="deleteLivre">
+    <part name="parameters" element="tns:deleteLivre"/>
+  </message>
+  <message name="deleteLivreResponse">
+    <part name="parameters" element="tns:deleteLivreResponse"/>
+  </message>
+  <message name="updateLivre">
+    <part name="parameters" element="tns:updateLivre"/>
+  </message>
+  <message name="updateLivreResponse">
+    <part name="parameters" element="tns:updateLivreResponse"/>
+  </message>
   <portType name="WebServiceGestionLivre">
     <operation name="createAuteur">
       <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/createAuteurRequest" message="tns:createAuteur"/>
@@ -26,6 +74,38 @@
     <operation name="getAllAuteur">
       <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAllAuteurRequest" message="tns:getAllAuteur"/>
       <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAllAuteurResponse" message="tns:getAllAuteurResponse"/>
+    </operation>
+    <operation name="getAuteur">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAuteurRequest" message="tns:getAuteur"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAuteurResponse" message="tns:getAuteurResponse"/>
+    </operation>
+    <operation name="deleteAuteur">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/deleteAuteurRequest" message="tns:deleteAuteur"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/deleteAuteurResponse" message="tns:deleteAuteurResponse"/>
+    </operation>
+    <operation name="updateAuteur">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/updateAuteurRequest" message="tns:updateAuteur"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/updateAuteurResponse" message="tns:updateAuteurResponse"/>
+    </operation>
+    <operation name="createLivre">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/createLivreRequest" message="tns:createLivre"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/createLivreResponse" message="tns:createLivreResponse"/>
+    </operation>
+    <operation name="getAllLivres">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAllLivresRequest" message="tns:getAllLivres"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getAllLivresResponse" message="tns:getAllLivresResponse"/>
+    </operation>
+    <operation name="getLivre">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getLivreRequest" message="tns:getLivre"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/getLivreResponse" message="tns:getLivreResponse"/>
+    </operation>
+    <operation name="deleteLivre">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/deleteLivreRequest" message="tns:deleteLivre"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/deleteLivreResponse" message="tns:deleteLivreResponse"/>
+    </operation>
+    <operation name="updateLivre">
+      <input wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/updateLivreRequest" message="tns:updateLivre"/>
+      <output wsam:Action="http://service.livre.gestion.com/WebServiceGestionLivre/updateLivreResponse" message="tns:updateLivreResponse"/>
     </operation>
   </portType>
   <binding name="WebServiceGestionLivrePortBinding" type="tns:WebServiceGestionLivre">
@@ -40,6 +120,78 @@
       </output>
     </operation>
     <operation name="getAllAuteur">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getAuteur">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="deleteAuteur">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="updateAuteur">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="createLivre">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getAllLivres">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getLivre">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="deleteLivre">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="updateLivre">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

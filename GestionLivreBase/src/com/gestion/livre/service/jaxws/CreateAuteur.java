@@ -12,26 +12,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "createAuteur", namespace = "http://service.livre.gestion.com/", propOrder = {
     "arg0",
     "arg1",
-    "arg2",
-    "arg3"
+    "arg2"
 })
 public class CreateAuteur {
 
     @XmlElement(name = "arg0", namespace = "")
-    private Integer arg0;
+    private String arg0;
     @XmlElement(name = "arg1", namespace = "")
     private String arg1;
     @XmlElement(name = "arg2", namespace = "")
     private String arg2;
-    @XmlElement(name = "arg3", namespace = "")
-    private String arg3;
 
     /**
      * 
      * @return
-     *     returns Integer
+     *     returns String
      */
-    public Integer getArg0() {
+    public String getArg0() {
         return this.arg0;
     }
 
@@ -40,7 +37,7 @@ public class CreateAuteur {
      * @param arg0
      *     the value for the arg0 property
      */
-    public void setArg0(Integer arg0) {
+    public void setArg0(String arg0) {
         this.arg0 = arg0;
     }
 
@@ -78,24 +75,6 @@ public class CreateAuteur {
      */
     public void setArg2(String arg2) {
         this.arg2 = arg2;
-    }
-
-    /**
-     * 
-     * @return
-     *     returns String
-     */
-    public String getArg3() {
-        return this.arg3;
-    }
-
-    /**
-     * 
-     * @param arg3
-     *     the value for the arg3 property
-     */
-    public void setArg3(String arg3) {
-        this.arg3 = arg3;
     }
 
 }

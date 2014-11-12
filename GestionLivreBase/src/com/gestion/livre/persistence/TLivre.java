@@ -1,55 +1,48 @@
 package com.gestion.livre.persistence;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name="Livre")
 public class TLivre {
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	
 	private long id;
 	
-	@Persistent
-	private Integer numero;
-	
-	@Persistent
 	private String titre;
 	
-	@Persistent
 	private double prix;
-	
-	@Persistent
+
 	private String description;
 	
-	@Persistent
 	private Integer numeroAuteur;
 	
-	public TLivre(Integer numero, String titre, double prix, String description){
-		this.numero = numero;
+	public TLivre(){}
+	
+	public TLivre(long id, String titre, double prix, String description){
+		this.id = id;
 		this.titre = titre;
 		this.prix = prix;
 		this.description = description;
 	}
 
+	@XmlAttribute(name="id")
 	public long getId() {
 		return id;
 	}
 
-	public Integer getNumero() {
-		return numero;
-	}
-
+	@XmlAttribute(name="titre")
 	public String getTitre() {
 		return titre;
 	}
 
+	@XmlAttribute(name="prix")
 	public double getPrix() {
 		return prix;
 	}
 
+	@XmlAttribute(name="description")
 	public String getDescription() {
 		return description;
 	}

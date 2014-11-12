@@ -22,9 +22,7 @@ public class AddAuteurServlet extends HttpServlet implements ConstanteMetier {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String sNumero = req.getParameter("Num");
-		int valeurNumero = Integer.parseInt(sNumero);
-		Integer valeurEntiere = new Integer(valeurNumero);
+
 		
 		String sNom = req.getParameter("Nom");
 		String sPrenom = req.getParameter("Prenom");
@@ -35,12 +33,12 @@ public class AddAuteurServlet extends HttpServlet implements ConstanteMetier {
 		monAuteur.setProperty(TAUTEUR_COLUMN_NOM, sNom);
 		monAuteur.setProperty(TAUTEUR_COLUMN_PRENOM, sNom);
 		monAuteur.setProperty(TAUTEUR_COLUMN_DOMICILE, sDomicile);
-		monAuteur.setProperty(TAUTEUR_COLUMN_NUM, valeurEntiere);
+
 		
 		datastoreService.put(monAuteur);
 		
 		resp.setContentType("text/plain");
 		resp.getWriter().println("AddAuteurServlet : Paramètre reçu  = "
-				+sNumero+" / "+sNom+" / "+sPrenom+" / 	"+sDomicile);
+				+" / "+sNom+" / "+sPrenom+" / 	"+sDomicile);
 	}
 }

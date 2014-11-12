@@ -13,14 +13,14 @@ import javax.xml.bind.annotation.XmlType;
 public class CreateAuteurResponse {
 
     @XmlElement(name = "return", namespace = "")
-    private Integer _return;
+    private com.gestion.livre.persistence.TAuteur _return;
 
     /**
      * 
      * @return
-     *     returns Integer
+     *     returns TAuteur
      */
-    public Integer getReturn() {
+    public com.gestion.livre.persistence.TAuteur getReturn() {
         return this._return;
     }
 
@@ -29,7 +29,7 @@ public class CreateAuteurResponse {
      * @param _return
      *     the value for the _return property
      */
-    public void setReturn(Integer _return) {
+    public void setReturn(com.gestion.livre.persistence.TAuteur _return) {
         this._return = _return;
     }
 

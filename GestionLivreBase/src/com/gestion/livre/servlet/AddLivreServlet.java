@@ -20,10 +20,7 @@ public class AddLivreServlet extends HttpServlet implements ConstanteMetier {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		String sNumero = req.getParameter("Num");
-		int valeurNumero = Integer.parseInt(sNumero);
-		Integer valeurEntiere = new Integer(valeurNumero);
+
 		
 		String sTitre = req.getParameter("Titre");
 		
@@ -37,13 +34,12 @@ public class AddLivreServlet extends HttpServlet implements ConstanteMetier {
 		monLivre.setProperty(TLIVRE_COLUMN_TITRE, sTitre);
 		monLivre.setProperty(TLIVRE_COLUMN_PRIX, valeurReel);
 		monLivre.setProperty(TLIVRE_COLUMN_DESC, sDesc);
-		monLivre.setProperty(TLIVRE_COLUMN_NUM, valeurEntiere);
 		
 		datastoreService.put(monLivre);
 		
 		resp.setContentType("text/plain");
 		resp.getWriter().println("AddLivreServlet : Paramètre reçu  = "
-				+sNumero+" / "+sTitre+" / "+sPrix+" / 	"+sDesc);
+				+" / "+sTitre+" / "+sPrix+" / 	"+sDesc);
 
 	}
 }

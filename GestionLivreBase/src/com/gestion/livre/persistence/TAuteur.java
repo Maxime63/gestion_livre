@@ -7,16 +7,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TAuteur {
 	
 	private long id;
-	private Integer numero;
 	private String nom;
 	private String prenom;
 	private String domicile;
 	
 	public TAuteur(){}
 	
-	public TAuteur (long id, Integer numero, String nom, String prenom, String domicile){
+	public TAuteur (long id, String nom, String prenom, String domicile){
 		this.id = id;
-		this.numero = numero;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.domicile = domicile;
@@ -25,11 +23,6 @@ public class TAuteur {
 	@XmlAttribute(name="id")
 	public long getId() {
 		return id;
-	}
-
-	@XmlAttribute(name="numero")
-	public Integer getNumero() {
-		return numero;
 	}
 
 	@XmlAttribute(name="nom")
