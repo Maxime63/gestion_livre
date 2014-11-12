@@ -1,11 +1,13 @@
 package com.gestion.livre.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import com.gestion.livre.metier.ConstanteMetier;
+import com.gestion.livre.persistence.TAuteur;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -32,10 +34,24 @@ public class WebServiceGestionLivre {
 	}
 	
 	@WebMethod
-	public List<String> getAllAuteur(){
+	public List<TAuteur> getAllAuteur(){
+		System.out.println("Get All Auteur !");
+		
 		Query q = new Query(ConstanteMetier.ENTITY_TAUTEUR);
 		PreparedQuery pq = datastoreService.prepare(q);
+		
+		List<TAuteur> auteurs = new ArrayList<TAuteur>();
+		
+		for (Entity auteur : pq.asIterable()) {
+			Integer numero = new Integer(1);
+			String nom = (String) auteur.getProperty(ConstanteMetier.TAUTEUR_COLUMN_NOM);			
+			String prenom = (String) auteur.getProperty(ConstanteMetier.TAUTEUR_COLUMN_PRENOM);			
+			String domicile = (String) auteur.getProperty(ConstanteMetier.TAUTEUR_COLUMN_DOMICILE);
+			TAuteur newAuteur = new TAuteur(auteur.getKey().getId(), numero, nom, prenom, domicile);
 			
-		return null;
+			auteurs.add(newAuteur);
+		}
+		
+		return auteurs;
 	}
 }

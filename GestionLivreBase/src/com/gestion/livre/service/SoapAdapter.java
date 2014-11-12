@@ -1,7 +1,12 @@
 package com.gestion.livre.service;
 
+import java.util.List;
+
+import com.gestion.livre.persistence.TAuteur;
 import com.gestion.livre.service.jaxws.CreateAuteur;
 import com.gestion.livre.service.jaxws.CreateAuteurResponse;
+import com.gestion.livre.service.jaxws.GetAllAuteur;
+import com.gestion.livre.service.jaxws.GetAllAuteurResponse;
 
 public class SoapAdapter {
 	private WebServiceGestionLivre ws = new WebServiceGestionLivre();
@@ -14,10 +19,18 @@ public class SoapAdapter {
 		
 		Integer num = ws.createAuteur(numero, nom, prenom, domicile);
 		
-		CreateAuteurResponse auteurResponse = new CreateAuteurResponse();
-		auteurResponse.setReturn(num);
+		CreateAuteurResponse response = new CreateAuteurResponse();
+		response.setReturn(num);
 		
-		return auteurResponse;
+		return response;
 	}
-
+	
+	public GetAllAuteurResponse adapterGetAllAuteur(GetAllAuteur request){
+		List<TAuteur> auteurs = ws.getAllAuteur();
+		
+		GetAllAuteurResponse response = new GetAllAuteurResponse();
+		response.setReturn(auteurs);
+		
+		return response;
+	}
 }

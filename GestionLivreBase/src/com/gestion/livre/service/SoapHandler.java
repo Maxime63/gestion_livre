@@ -13,10 +13,12 @@ import javax.xml.soap.SOAPMessage;
 import javax.xml.transform.dom.DOMSource;
 
 import com.gestion.livre.service.jaxws.CreateAuteur;
+import com.gestion.livre.service.jaxws.GetAllAuteur;
 
 public class SoapHandler {
 	private static final String NAMESPACE_URI = "http://service.livre.gestion.com/";
 	private static final QName CREATE_AUTEUR_QNAME = new QName(NAMESPACE_URI, "createAuteur");
+	private static final QName GET_ALL_AUTEUR_QNAME = new QName(NAMESPACE_URI, "getAllAuteur");
 	private MessageFactory messageFactory;
 	private SoapAdapter adapter;
 	
@@ -35,9 +37,16 @@ public class SoapHandler {
 			if(next instanceof SOAPElement){
 				SOAPElement soapElement = (SOAPElement) next;
 				QName qname = soapElement.getElementQName();
-
+				
+				System.out.println("reçu : " + qname);
+				System.out.println("vrai : " + GET_ALL_AUTEUR_QNAME);
+				
 				if(CREATE_AUTEUR_QNAME.equals(qname)){
 					response = appelerCreateAuteur(soapElement);
+					break;
+				}
+				if(GET_ALL_AUTEUR_QNAME.equals(qname)){
+					response = appelerGetAllAuteur(soapElement);
 					break;
 				}
 			}
@@ -60,6 +69,11 @@ public class SoapHandler {
 	private Object appelerCreateAuteur(SOAPElement soapElement){
 		CreateAuteur createAuteur = JAXB.unmarshal(new DOMSource(soapElement), CreateAuteur.class);
 		return adapter.adapterCreateAuteur(createAuteur);
+	}
+	
+	private Object appelerGetAllAuteur(SOAPElement soapElement){
+		GetAllAuteur getAllAuteur = JAXB.unmarshal(new DOMSource(soapElement), GetAllAuteur.class);
+		return adapter.adapterGetAllAuteur(getAllAuteur);
 	}
 	
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://service.livre.gestion.com/" xmlns:tns="http://service.livre.gestion.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:element name="Auteur" type="tns:tAuteur"/>
+
   <xs:element name="createAuteur" type="tns:createAuteur"/>
 
   <xs:element name="createAuteurResponse" type="tns:createAuteurResponse"/>
@@ -15,8 +17,17 @@
 
   <xs:complexType name="getAllAuteurResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="return" type="tns:tAuteur" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tAuteur">
+    <xs:sequence/>
+    <xs:attribute name="domicile" type="xs:string"/>
+    <xs:attribute name="id" type="xs:long" use="required"/>
+    <xs:attribute name="nom" type="xs:string"/>
+    <xs:attribute name="numero" type="xs:int"/>
+    <xs:attribute name="prenom" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="createAuteur">

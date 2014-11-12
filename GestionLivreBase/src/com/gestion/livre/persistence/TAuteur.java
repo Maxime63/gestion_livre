@@ -1,52 +1,48 @@
 package com.gestion.livre.persistence;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@PersistenceCapable(identityType=IdentityType.APPLICATION)
+@XmlRootElement(name="Auteur")
 public class TAuteur {
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	
 	private long id;
-	
-	@Persistent
 	private Integer numero;
-	
-	@Persistent
 	private String nom;
-	
-	@Persistent
 	private String prenom;
-	
-	@Persistent
 	private String domicile;
 	
-	public TAuteur (Integer numero, String nom, String prenom, String domicile){
+	public TAuteur(){}
+	
+	public TAuteur (long id, Integer numero, String nom, String prenom, String domicile){
+		this.id = id;
 		this.numero = numero;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.domicile = domicile;
 	}
-
+	
+	@XmlAttribute(name="id")
 	public long getId() {
 		return id;
 	}
 
+	@XmlAttribute(name="numero")
 	public Integer getNumero() {
 		return numero;
 	}
 
+	@XmlAttribute(name="nom")
 	public String getNom() {
 		return nom;
 	}
 
+	@XmlAttribute(name="prenom")
 	public String getPrenom() {
 		return prenom;
 	}
 
+	@XmlAttribute(name="domicile")
 	public String getDomicile() {
 		return domicile;
 	}
