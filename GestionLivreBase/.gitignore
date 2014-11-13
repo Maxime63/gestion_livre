@@ -1,0 +1,14 @@
+*.class
+*.jar
+*.war
+*.ear
+*target*
+
+.classpath
+.project
+.settings/
+
+genereWS.bat
+war/WEB_INF/lib/
+war/WEB_INF/classes/
+war/WEB_INF/appengine-generated/

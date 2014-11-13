@@ -1,6 +1,15 @@
 /build
-GestionLivreBase/.classpath
-GestionLivreBase/.project
+
+*.class
+*.jar
+*.war
+*.ear
+*target*
+
+.classpath
+.project
+.settings/
+
 GestionLivreBase/genereWS.bat
 GestionLivreBase/war/WEB_INF/lib
 GestionLivreBase/war/WEB_INF/classes
