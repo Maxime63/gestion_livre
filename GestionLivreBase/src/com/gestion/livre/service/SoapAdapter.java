@@ -29,14 +29,14 @@ public class SoapAdapter {
 	private WebServiceGestionLivre ws = new WebServiceGestionLivre();
 	
 	public CreateAuteurResponse adapterCreateAuteur(CreateAuteur request){
-		String nom = request.getArg0();
-		String prenom = request.getArg1();
-		String domicile = request.getArg2();
+		String nom = request.getNom();
+		String prenom = request.getPrenom();
+		String domicile = request.getDomicile();
 		
 		TAuteur auteur = ws.createAuteur(nom, prenom, domicile);
 		
 		CreateAuteurResponse response = new CreateAuteurResponse();
-		response.setReturn(auteur);
+		response.setAuteur(auteur);
 		
 		return response;
 	}
@@ -46,7 +46,7 @@ public class SoapAdapter {
 		List<TAuteur> auteurs = ws.getAllAuteur();
 		
 		GetAllAuteurResponse response = new GetAllAuteurResponse();
-		response.setReturn(auteurs);
+		response.setAuteur(auteurs);
 		
 		return response;
 	}
@@ -54,9 +54,9 @@ public class SoapAdapter {
 	
 	public GetAuteurResponse adapterGetAuteur(GetAuteur request)
 	{
-		TAuteur auteur = ws.getAuteur(request.getArg0());
+		TAuteur auteur = ws.getAuteur(request.getId());
 		GetAuteurResponse response = new GetAuteurResponse();
-		response.setReturn(auteur);
+		response.setAuteur(auteur);
 		return response;
 		
 	}
@@ -64,26 +64,26 @@ public class SoapAdapter {
 	
 	public DeleteAuteurResponse adapterDeleteAuteur(DeleteAuteur request)
 	{
-		int res = ws.deleteAuteur(request.getArg0());
+		boolean res = ws.deleteAuteur(request.getId());
 		DeleteAuteurResponse response = new DeleteAuteurResponse();
-		response.setReturn(res);
+		response.setIsDeleted(res);
 		return response;
 	}
 
 	public UpdateAuteurResponse adapterUpdateAuteur(UpdateAuteur request)
 	{
-		TAuteur auteur = ws.updateAuteur(request.getArg0(), request.getArg1(), request.getArg2(), request.getArg3());
+		TAuteur auteur = ws.updateAuteur(request.getNom(), request.getPrenom(), request.getDomicile(), request.getId());
 		UpdateAuteurResponse response = new UpdateAuteurResponse();
-		response.setReturn(auteur);
+		response.setAuteur(auteur);
 		return response;
 	}
 	
 	
 	public CreateLivreResponse adapterCreateLivre(CreateLivre request)
 	{
-		TLivre livre = ws.createLivre(request.getArg0(), request.getArg1(), request.getArg2());
+		TLivre livre = ws.createLivre(request.getTitre(), request.getPrix(), request.getDescription());
 		CreateLivreResponse response = new CreateLivreResponse();
-		response.setReturn(livre);
+		response.setLivre(livre);
 		return response;
 	}
 	
@@ -91,7 +91,7 @@ public class SoapAdapter {
 		List<TLivre> livres = ws.getAllLivres();
 		
 		GetAllLivresResponse response = new GetAllLivresResponse();
-		response.setReturn(livres);
+		response.setLivre(livres);
 		
 		return response;
 	}
@@ -99,9 +99,9 @@ public class SoapAdapter {
 	
 	public GetLivreResponse adapterGetLivre(GetLivre request)
 	{
-		TLivre livre = ws.getLivre(request.getArg0());
+		TLivre livre = ws.getLivre(request.getId());
 		GetLivreResponse response = new GetLivreResponse();
-		response.setReturn(livre);
+		response.setLivre(livre);
 		return response;
 		
 	}
@@ -109,18 +109,18 @@ public class SoapAdapter {
 	
 	public DeleteLivreResponse adapterDeleteLivre(DeleteLivre request)
 	{
-		int res = ws.deleteLivre(request.getArg0());
+		boolean res = ws.deleteLivre(request.getId());
 		DeleteLivreResponse response = new DeleteLivreResponse();
-		response.setReturn(res);
+		response.setIsDeleted(res);
 		return response;
 	}
 		
 
 	public UpdateLivreResponse adapterUpdateLivre(UpdateLivre request)
 	{
-		TLivre livre = ws.updateLivre(request.getArg0(), request.getArg1(), request.getArg2(), request.getArg3());
+		TLivre livre = ws.updateLivre(request.getTitre(), request.getPrix(), request.getDescription(), request.getId());
 		UpdateLivreResponse response = new UpdateLivreResponse();
-		response.setReturn(livre);
+		response.setLivre(livre);
 		return response;
 	}
 	

@@ -4,12 +4,12 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<servlet>
-		<servlet-name>WebService</servlet-name>
-		<servlet-class>com.gestion.livre.servlet.WebServiceServlet</servlet-class>
+		<servlet-name>GetAllAuteur</servlet-name>
+		<servlet-class>com.gestion.livre.servlet.GetAllAuteurServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>WebService</servlet-name>
-		<url-pattern>/ws</url-pattern>
+		<servlet-name>GetAllAuteur</servlet-name>
+		<url-pattern>/getAllAuteur</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getAllLivresResponse", namespace = "http://service.livre.gestion.com/")
 public class GetAllLivresResponse {
 
-    @XmlElement(name = "return", namespace = "")
-    private List<com.gestion.livre.persistence.TLivre> _return;
+    @XmlElement(name = "Livre", namespace = "")
+    private List<com.gestion.livre.persistence.TLivre> livre;
 
     /**
      * 
      * @return
      *     returns List<TLivre>
      */
-    public List<com.gestion.livre.persistence.TLivre> getReturn() {
-        return this._return;
+    public List<com.gestion.livre.persistence.TLivre> getLivre() {
+        return this.livre;
     }
 
     /**
      * 
-     * @param _return
-     *     the value for the _return property
+     * @param livre
+     *     the value for the livre property
      */
-    public void setReturn(List<com.gestion.livre.persistence.TLivre> _return) {
-        this._return = _return;
+    public void setLivre(List<com.gestion.livre.persistence.TLivre> livre) {
+        this.livre = livre;
     }
 
 }

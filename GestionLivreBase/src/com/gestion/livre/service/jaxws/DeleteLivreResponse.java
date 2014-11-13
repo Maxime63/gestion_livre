@@ -12,25 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "deleteLivreResponse", namespace = "http://service.livre.gestion.com/")
 public class DeleteLivreResponse {
 
-    @XmlElement(name = "return", namespace = "")
-    private int _return;
+    @XmlElement(name = "IsDeleted", namespace = "")
+    private boolean isDeleted;
 
     /**
      * 
      * @return
-     *     returns int
+     *     returns boolean
      */
-    public int getReturn() {
-        return this._return;
+    public boolean isIsDeleted() {
+        return this.isDeleted;
     }
 
     /**
      * 
-     * @param _return
-     *     the value for the _return property
+     * @param isDeleted
+     *     the value for the isDeleted property
      */
-    public void setReturn(int _return) {
-        this._return = _return;
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
 }

@@ -12,25 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "deleteAuteur", namespace = "http://service.livre.gestion.com/")
 public class DeleteAuteur {
 
-    @XmlElement(name = "arg0", namespace = "")
-    private long arg0;
+    @XmlElement(name = "Id", namespace = "")
+    private long id;
 
     /**
      * 
      * @return
      *     returns long
      */
-    public long getArg0() {
-        return this.arg0;
+    public long getId() {
+        return this.id;
     }
 
     /**
      * 
-     * @param arg0
-     *     the value for the arg0 property
+     * @param id
+     *     the value for the id property
      */
-    public void setArg0(long arg0) {
-        this.arg0 = arg0;
+    public void setId(long id) {
+        this.id = id;
     }
 
 }

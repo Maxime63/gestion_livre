@@ -2,6 +2,7 @@ package com.gestion.livre.persistence;
 
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -16,7 +17,7 @@ public class TLivre {
 
 	private String description;
 	
-	private Integer numeroAuteur;
+	private long idAuteur;
 	
 	public TLivre(){}
 	
@@ -27,27 +28,27 @@ public class TLivre {
 		this.description = description;
 	}
 
-	@XmlAttribute(name="id")
+	@XmlElement(name="Id")
 	public long getId() {
 		return id;
 	}
 
-	@XmlAttribute(name="titre")
+	@XmlElement(name="Titre")
 	public String getTitre() {
 		return titre;
 	}
 
-	@XmlAttribute(name="prix")
+	@XmlElement(name="Prix")
 	public double getPrix() {
 		return prix;
 	}
 
-	@XmlAttribute(name="description")
+	@XmlElement(name="Description")
 	public String getDescription() {
 		return description;
 	}
-
-	public Integer getNumeroAuteur() {
-		return numeroAuteur;
+	
+	public long getNumeroAuteur() {
+		return idAuteur;
 	}
 }

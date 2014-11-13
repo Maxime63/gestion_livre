@@ -10,35 +10,35 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "createLivre", namespace = "http://service.livre.gestion.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "createLivre", namespace = "http://service.livre.gestion.com/", propOrder = {
-    "arg0",
-    "arg1",
-    "arg2"
+    "titre",
+    "prix",
+    "description"
 })
 public class CreateLivre {
 
-    @XmlElement(name = "arg0", namespace = "")
-    private String arg0;
-    @XmlElement(name = "arg1", namespace = "")
-    private double arg1;
-    @XmlElement(name = "arg2", namespace = "")
-    private String arg2;
+    @XmlElement(name = "Titre", namespace = "")
+    private String titre;
+    @XmlElement(name = "Prix", namespace = "")
+    private double prix;
+    @XmlElement(name = "Description", namespace = "")
+    private String description;
 
     /**
      * 
      * @return
      *     returns String
      */
-    public String getArg0() {
-        return this.arg0;
+    public String getTitre() {
+        return this.titre;
     }
 
     /**
      * 
-     * @param arg0
-     *     the value for the arg0 property
+     * @param titre
+     *     the value for the titre property
      */
-    public void setArg0(String arg0) {
-        this.arg0 = arg0;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     /**
@@ -46,17 +46,17 @@ public class CreateLivre {
      * @return
      *     returns double
      */
-    public double getArg1() {
-        return this.arg1;
+    public double getPrix() {
+        return this.prix;
     }
 
     /**
      * 
-     * @param arg1
-     *     the value for the arg1 property
+     * @param prix
+     *     the value for the prix property
      */
-    public void setArg1(double arg1) {
-        this.arg1 = arg1;
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 
     /**
@@ -64,17 +64,17 @@ public class CreateLivre {
      * @return
      *     returns String
      */
-    public String getArg2() {
-        return this.arg2;
+    public String getDescription() {
+        return this.description;
     }
 
     /**
      * 
-     * @param arg2
-     *     the value for the arg2 property
+     * @param description
+     *     the value for the description property
      */
-    public void setArg2(String arg2) {
-        this.arg2 = arg2;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

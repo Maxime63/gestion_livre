@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getAllAuteurResponse", namespace = "http://service.livre.gestion.com/")
 public class GetAllAuteurResponse {
 
-    @XmlElement(name = "return", namespace = "")
-    private List<com.gestion.livre.persistence.TAuteur> _return;
+    @XmlElement(name = "Auteur", namespace = "")
+    private List<com.gestion.livre.persistence.TAuteur> auteur;
 
     /**
      * 
      * @return
      *     returns List<TAuteur>
      */
-    public List<com.gestion.livre.persistence.TAuteur> getReturn() {
-        return this._return;
+    public List<com.gestion.livre.persistence.TAuteur> getAuteur() {
+        return this.auteur;
     }
 
     /**
      * 
-     * @param _return
-     *     the value for the _return property
+     * @param auteur
+     *     the value for the auteur property
      */
-    public void setReturn(List<com.gestion.livre.persistence.TAuteur> _return) {
-        this._return = _return;
+    public void setAuteur(List<com.gestion.livre.persistence.TAuteur> auteur) {
+        this.auteur = auteur;
     }
 
 }

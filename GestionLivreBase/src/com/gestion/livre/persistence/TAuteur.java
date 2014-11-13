@@ -1,6 +1,6 @@
 package com.gestion.livre.persistence;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="Auteur")
@@ -20,22 +20,22 @@ public class TAuteur {
 		this.domicile = domicile;
 	}
 	
-	@XmlAttribute(name="id")
+	@XmlElement(name="Id")
 	public long getId() {
 		return id;
 	}
 
-	@XmlAttribute(name="nom")
+	@XmlElement(name="Nom")
 	public String getNom() {
 		return nom;
 	}
 
-	@XmlAttribute(name="prenom")
+	@XmlElement(name="Prenom")
 	public String getPrenom() {
 		return prenom;
 	}
 
-	@XmlAttribute(name="domicile")
+	@XmlElement(name="Domicile")
 	public String getDomicile() {
 		return domicile;
 	}

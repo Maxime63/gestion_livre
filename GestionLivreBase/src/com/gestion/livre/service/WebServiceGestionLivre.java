@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import com.gestion.livre.metier.ConstanteMetier;
@@ -25,7 +27,10 @@ public class WebServiceGestionLivre {
 	DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 	
 	@WebMethod
-	public TAuteur createAuteur(String nom, String prenom, String domicile){
+	@WebResult(name="Auteur")
+	public TAuteur createAuteur(@WebParam(name="Nom") String nom, 
+								@WebParam(name="Prenom") String prenom, 
+								@WebParam(name="Domicile") String domicile){
 		Entity monAuteur = new Entity(ConstanteMetier.ENTITY_TAUTEUR);
 		monAuteur.setProperty(ConstanteMetier.TAUTEUR_COLUMN_NOM, nom);
 		monAuteur.setProperty(ConstanteMetier.TAUTEUR_COLUMN_PRENOM, prenom);
@@ -39,6 +44,7 @@ public class WebServiceGestionLivre {
 	}
 	
 	@WebMethod
+	@WebResult(name="Auteur")
 	public List<TAuteur> getAllAuteur(){
 		System.out.println("Get All Auteur !");
 		
@@ -62,7 +68,8 @@ public class WebServiceGestionLivre {
 	
 
 	@WebMethod
-	public TAuteur getAuteur(long id)
+	@WebResult(name="Auteur")
+	public TAuteur getAuteur(@WebParam(name="Id") long id)
 	{
 
 		TAuteur newAuteur = null;
@@ -86,23 +93,25 @@ public class WebServiceGestionLivre {
 	 * Pour l'instant return 0 si ok -1 si ko
 	 */
 	@WebMethod
-	public int deleteAuteur(long id)
+	@WebResult(name="IsDeleted")
+	public boolean deleteAuteur(@WebParam(name="Id") long id)
 	{
-		TAuteur newAuteur = null;
-		int res;
+		boolean res = false;
 		Key key = KeyFactory.createKey(ConstanteMetier.ENTITY_TAUTEUR, id);
-		if(!key.isComplete())
-			res= -1;
-		else
+		if(key.isComplete())
 		{
 			datastoreService.delete(key);
-			res = 0;
+			res = true;
 		}
 		return res;
 	}
 	
 	@WebMethod
-	public TAuteur updateAuteur(String nom, String prenom, String domicile, long id){
+	@WebResult(name="Auteur")
+	public TAuteur updateAuteur(@WebParam(name="Nom") String nom, 
+								@WebParam(name="Prenom") String prenom, 
+								@WebParam(name="Domicile") String domicile, 
+								@WebParam(name="Id")long id){
 		
 		Key key = KeyFactory.createKey(ConstanteMetier.ENTITY_TAUTEUR, id);
 
@@ -126,7 +135,10 @@ public class WebServiceGestionLivre {
 	
 	
 	@WebMethod
-	public TLivre createLivre(String titre, double prix, String description){
+	@WebResult(name="Livre")
+	public TLivre createLivre(@WebParam(name="Titre") String titre, 
+							  @WebParam(name="Prix") double prix, 
+							  @WebParam(name="Description") String description){
 		Entity monLivre = new Entity(ConstanteMetier.ENTITY_TLIVRE);
 		monLivre.setProperty(ConstanteMetier.TLIVRE_COLUMN_TITRE, titre);
 		monLivre.setProperty(ConstanteMetier.TLIVRE_COLUMN_PRIX, prix);
@@ -141,6 +153,7 @@ public class WebServiceGestionLivre {
 	
 	
 	@WebMethod
+	@WebResult(name="Livre")
 	public List<TLivre> getAllLivres(){
 		System.out.println("Get All Livres !");
 		
@@ -164,7 +177,8 @@ public class WebServiceGestionLivre {
 	
 
 	@WebMethod
-	public TLivre getLivre(long id)
+	@WebResult(name="Livre")
+	public TLivre getLivre(@WebParam(name="Id") long id)
 	{
 
 		TLivre newLivre = null;
@@ -185,24 +199,26 @@ public class WebServiceGestionLivre {
 
 	
 	@WebMethod
-	public int deleteLivre(long id)
+	@WebResult(name="IsDeleted")
+	public boolean deleteLivre(@WebParam(name="Id") long id)
 	{
-		TLivre newLivre = null;
-		int res;
+		boolean res = false;
 		Key key = KeyFactory.createKey(ConstanteMetier.ENTITY_TLIVRE, id);
-		if(!key.isComplete())
-			res= -1;
-		else
+		if(key.isComplete())
 		{
 			datastoreService.delete(key);
-			res = 0;
+			res = true;
 		}
 		return res;
 	}
 	
 	
 	@WebMethod
-	public TLivre updateLivre(String titre, double prix, String desc, long id){
+	@WebResult(name="Livre")
+	public TLivre updateLivre(@WebParam(name="Titre") String titre, 
+							  @WebParam(name="Prix") double prix, 
+							  @WebParam(name="Description") String desc, 
+							  @WebParam(name="Id") long id){
 		
 		Key key = KeyFactory.createKey(ConstanteMetier.ENTITY_TLIVRE, id);
 
