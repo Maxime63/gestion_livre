@@ -1,0 +1,7 @@
+/build
+./GestionLivreBase/.classpath
+./GestionLivreBase/.project
+./GestionLivreBase/genereWS.bat
+./GestionLivreBase/war/WEB_INF/lib
+./GestionLivreBase/war/WEB_INF/classes
+./GestionLivreBase/war/WEB_INF/appengine-generated
