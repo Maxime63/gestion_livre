@@ -10,21 +10,42 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "updateLivre", namespace = "http://service.livre.gestion.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "updateLivre", namespace = "http://service.livre.gestion.com/", propOrder = {
+    "id",
     "titre",
     "prix",
     "description",
-    "id"
+    "auteurId"
 })
 public class UpdateLivre {
 
+    @XmlElement(name = "Id", namespace = "")
+    private long id;
     @XmlElement(name = "Titre", namespace = "")
     private String titre;
     @XmlElement(name = "Prix", namespace = "")
     private double prix;
     @XmlElement(name = "Description", namespace = "")
     private String description;
-    @XmlElement(name = "Id", namespace = "")
-    private long id;
+    @XmlElement(name = "AuteurId", namespace = "")
+    private long auteurId;
+
+    /**
+     * 
+     * @return
+     *     returns long
+     */
+    public long getId() {
+        return this.id;
+    }
+
+    /**
+     * 
+     * @param id
+     *     the value for the id property
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
     /**
      * 
@@ -85,17 +106,17 @@ public class UpdateLivre {
      * @return
      *     returns long
      */
-    public long getId() {
-        return this.id;
+    public long getAuteurId() {
+        return this.auteurId;
     }
 
     /**
      * 
-     * @param id
-     *     the value for the id property
+     * @param auteurId
+     *     the value for the auteurId property
      */
-    public void setId(long id) {
-        this.id = id;
+    public void setAuteurId(long auteurId) {
+        this.auteurId = auteurId;
     }
 
 }

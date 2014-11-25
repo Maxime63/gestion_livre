@@ -12,7 +12,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "createLivre", namespace = "http://service.livre.gestion.com/", propOrder = {
     "titre",
     "prix",
-    "description"
+    "description",
+    "auteurId"
 })
 public class CreateLivre {
 
@@ -22,6 +23,8 @@ public class CreateLivre {
     private double prix;
     @XmlElement(name = "Description", namespace = "")
     private String description;
+    @XmlElement(name = "AuteurId", namespace = "")
+    private long auteurId;
 
     /**
      * 
@@ -75,6 +78,24 @@ public class CreateLivre {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * 
+     * @return
+     *     returns long
+     */
+    public long getAuteurId() {
+        return this.auteurId;
+    }
+
+    /**
+     * 
+     * @param auteurId
+     *     the value for the auteurId property
+     */
+    public void setAuteurId(long auteurId) {
+        this.auteurId = auteurId;
     }
 
 }

@@ -27,6 +27,10 @@
 
   <xs:element name="getAllLivres" type="tns:getAllLivres"/>
 
+  <xs:element name="getAllLivresByAuteur" type="tns:getAllLivresByAuteur"/>
+
+  <xs:element name="getAllLivresByAuteurResponse" type="tns:getAllLivresByAuteurResponse"/>
+
   <xs:element name="getAllLivresResponse" type="tns:getAllLivresResponse"/>
 
   <xs:element name="getAuteur" type="tns:getAuteur"/>
@@ -44,29 +48,6 @@
   <xs:element name="updateLivre" type="tns:updateLivre"/>
 
   <xs:element name="updateLivreResponse" type="tns:updateLivreResponse"/>
-
-  <xs:complexType name="createLivre">
-    <xs:sequence>
-      <xs:element name="Titre" type="xs:string" minOccurs="0"/>
-      <xs:element name="Prix" type="xs:double"/>
-      <xs:element name="Description" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="createLivreResponse">
-    <xs:sequence>
-      <xs:element ref="tns:Livre" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="tLivre">
-    <xs:sequence>
-      <xs:element name="Description" type="xs:string" minOccurs="0"/>
-      <xs:element name="Id" type="xs:long"/>
-      <xs:element name="Prix" type="xs:double"/>
-      <xs:element name="Titre" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
 
   <xs:complexType name="updateAuteur">
     <xs:sequence>
@@ -92,9 +73,36 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="createLivre">
+    <xs:sequence>
+      <xs:element name="Titre" type="xs:string" minOccurs="0"/>
+      <xs:element name="Prix" type="xs:double"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="AuteurId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createLivreResponse">
+    <xs:sequence>
+      <xs:element ref="tns:Livre" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tLivre">
+    <xs:sequence>
+      <xs:element name="AuteurId" type="xs:long"/>
+      <xs:element name="AuteurNomPrenom" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="Prix" type="xs:double"/>
+      <xs:element name="Titre" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="deleteLivre">
     <xs:sequence>
       <xs:element name="Id" type="xs:long"/>
+      <xs:element name="AuteurId" type="xs:long"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -114,6 +122,19 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getLivre">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="AuteurId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLivreResponse">
+    <xs:sequence>
+      <xs:element ref="tns:Livre" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getAuteur">
     <xs:sequence>
       <xs:element name="Id" type="xs:long"/>
@@ -126,15 +147,15 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getLivre">
+  <xs:complexType name="getAllLivresByAuteur">
     <xs:sequence>
-      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="AuteurId" type="xs:long"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getLivreResponse">
+  <xs:complexType name="getAllLivresByAuteurResponse">
     <xs:sequence>
-      <xs:element ref="tns:Livre" minOccurs="0"/>
+      <xs:element ref="tns:Livre" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -147,6 +168,16 @@
   <xs:complexType name="deleteAuteurResponse">
     <xs:sequence>
       <xs:element name="IsDeleted" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllLivres">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllLivresResponse">
+    <xs:sequence>
+      <xs:element ref="tns:Livre" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -166,26 +197,17 @@
 
   <xs:complexType name="updateLivre">
     <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
       <xs:element name="Titre" type="xs:string" minOccurs="0"/>
       <xs:element name="Prix" type="xs:double"/>
       <xs:element name="Description" type="xs:string" minOccurs="0"/>
-      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="AuteurId" type="xs:long"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="updateLivreResponse">
     <xs:sequence>
       <xs:element ref="tns:Livre" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getAllLivres">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="getAllLivresResponse">
-    <xs:sequence>
-      <xs:element ref="tns:Livre" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

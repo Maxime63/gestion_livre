@@ -41,15 +41,7 @@ public class GetAllAuteurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			MessageFactory messageFactory = MessageFactory.newInstance();
-			SOAPMessage soapMessage = messageFactory.createMessage();
-			SOAPPart soapPart = soapMessage.getSOAPPart();
-			
-			SOAPEnvelope soapEnv = soapPart.getEnvelope();
-			soapEnv.addNamespaceDeclaration(ConstanteMetier.NAMESPACE_PREFIX, ConstanteMetier.NAMESPACE_URI);
-			
-			SOAPBody soapBody = soapEnv.getBody();
-			soapBody.addChildElement(ConstanteMetier.GET_ALL_AUTEUR_NODE, ConstanteMetier.NAMESPACE_PREFIX);
+			SOAPMessage soapMessage = createRequest();
 			
 			SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
             SOAPConnection soapConnection = soapConnectionFactory.createConnection();
@@ -57,12 +49,25 @@ public class GetAllAuteurServlet extends HttpServlet {
 
 			List<TAuteur> auteurs = getAllAuteur(soapResponse);
 			req.setAttribute(ConstanteMetier.AUTEURS_LIST_PARAM, auteurs);
-			
+						
 			this.getServletContext().getRequestDispatcher("/WEB-INF/auteurs.jsp").forward(req, resp);
 		} catch (SOAPException e) {
 			//TODO Gérer les erreurs internes !
 			e.printStackTrace();
 		}
+	}
+
+	private SOAPMessage createRequest() throws SOAPException {
+		MessageFactory messageFactory = MessageFactory.newInstance();
+		SOAPMessage soapMessage = messageFactory.createMessage();
+		SOAPPart soapPart = soapMessage.getSOAPPart();
+		
+		SOAPEnvelope soapEnv = soapPart.getEnvelope();
+		soapEnv.addNamespaceDeclaration(ConstanteMetier.NAMESPACE_PREFIX, ConstanteMetier.NAMESPACE_URI);
+		
+		SOAPBody soapBody = soapEnv.getBody();
+		soapBody.addChildElement(ConstanteMetier.XML_ELEMENT_GET_ALL_AUTEUR, ConstanteMetier.NAMESPACE_PREFIX);
+		return soapMessage;
 	}
 	
 	private List<TAuteur> getAllAuteur(SOAPMessage soapResponse) throws SOAPException{

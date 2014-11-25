@@ -9,11 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "deleteLivre", namespace = "http://service.livre.gestion.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteLivre", namespace = "http://service.livre.gestion.com/")
+@XmlType(name = "deleteLivre", namespace = "http://service.livre.gestion.com/", propOrder = {
+    "id",
+    "auteurId"
+})
 public class DeleteLivre {
 
     @XmlElement(name = "Id", namespace = "")
     private long id;
+    @XmlElement(name = "AuteurId", namespace = "")
+    private long auteurId;
 
     /**
      * 
@@ -31,6 +36,24 @@ public class DeleteLivre {
      */
     public void setId(long id) {
         this.id = id;
+    }
+
+    /**
+     * 
+     * @return
+     *     returns long
+     */
+    public long getAuteurId() {
+        return this.auteurId;
+    }
+
+    /**
+     * 
+     * @param auteurId
+     *     the value for the auteurId property
+     */
+    public void setAuteurId(long auteurId) {
+        this.auteurId = auteurId;
     }
 
 }

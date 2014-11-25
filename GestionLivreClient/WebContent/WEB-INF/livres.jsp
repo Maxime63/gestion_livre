@@ -1,5 +1,5 @@
 <%@page import="com.gestion.livre.metier.ConstanteMetier"%>
-<%@page import="com.gestion.livre.persistence.TAuteur"%>
+<%@page import="com.gestion.livre.persistence.TLivre"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -17,32 +17,38 @@
 		<a href="/addAuteur">Ajouter un auteur</a>
 	</div>
 	<div class="contenu">
-		<h1>Liste des auteurs</h1>
+		<h1>Liste des livres</h1>
 		<table>
 			<thead>
 				<tr>
 					<th>N°</th>
+					<th>Titre</th>
 					<th>Auteur</th>
-					<th>Domicile</th>
+					<th>Prix</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 		<%
-		List<TAuteur> auteurs = (List<TAuteur>) request.getAttribute(ConstanteMetier.AUTEURS_LIST_PARAM);
+		List<TLivre> livres = (List<TLivre>) request.getAttribute(ConstanteMetier.LIVRES_LIST_PARAM);
 	
-		int nbAuteur=0;
-		for(TAuteur auteur  : auteurs){
+		int nbLivres=0;
+		for(TLivre livre  : livres){
 		%>
 				<tr>
-					<td><% out.print(++nbAuteur); %></td>
+					<td><% out.print(++nbLivres); %></td>
+					<%
+					String getLivreUrl = "/getLivre?" + ConstanteMetier.LIVRE_ID_PARAM + "=" + livre.getId() + "&" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + livre.getAuteurId();
+					%>
+					<td><a href="<%out.print(getLivreUrl);%>"><% out.print(livre.getTitre()); %></a></td>
 					<td>
 						<%
-							String url = "/getAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteur.getId();
+							String url = "/getAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + livre.getAuteurId();
 						%>
-						<a href="<% out.print(url); %>"><% out.print(auteur.getNom()); %> <% out.print(auteur.getPrenom()); %></a>
+						<a href="<% out.print(url); %>"><% out.print(livre.getAuteurNomPrenom()); %></a>
 					</td>
-					<td><% out.print(auteur.getDomicile()); %></td>
-					<td></td>
+					<td><% out.print(livre.getPrix()); %></td>
+					<td><% out.print(livre.getDescription()); %></td>
 				</tr>		
 		<%
 		}

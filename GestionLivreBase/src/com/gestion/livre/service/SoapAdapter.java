@@ -15,6 +15,8 @@ import com.gestion.livre.service.jaxws.DeleteLivreResponse;
 import com.gestion.livre.service.jaxws.GetAllAuteur;
 import com.gestion.livre.service.jaxws.GetAllAuteurResponse;
 import com.gestion.livre.service.jaxws.GetAllLivres;
+import com.gestion.livre.service.jaxws.GetAllLivresByAuteur;
+import com.gestion.livre.service.jaxws.GetAllLivresByAuteurResponse;
 import com.gestion.livre.service.jaxws.GetAllLivresResponse;
 import com.gestion.livre.service.jaxws.GetAuteur;
 import com.gestion.livre.service.jaxws.GetAuteurResponse;
@@ -81,7 +83,7 @@ public class SoapAdapter {
 	
 	public CreateLivreResponse adapterCreateLivre(CreateLivre request)
 	{
-		TLivre livre = ws.createLivre(request.getTitre(), request.getPrix(), request.getDescription());
+		TLivre livre = ws.createLivre(request.getTitre(), request.getPrix(), request.getDescription(), request.getAuteurId());
 		CreateLivreResponse response = new CreateLivreResponse();
 		response.setLivre(livre);
 		return response;
@@ -96,10 +98,19 @@ public class SoapAdapter {
 		return response;
 	}
 
+	public GetAllLivresByAuteurResponse adapterGetAllLivresByAuteur(GetAllLivresByAuteur request){
+		List<TLivre> livres = ws.getAllLivresByAuteur(request.getAuteurId());
+		
+		GetAllLivresByAuteurResponse response = new GetAllLivresByAuteurResponse();
+		response.setLivre(livres);
+		
+		return response;
+	}
+
 	
 	public GetLivreResponse adapterGetLivre(GetLivre request)
 	{
-		TLivre livre = ws.getLivre(request.getId());
+		TLivre livre = ws.getLivre(request.getId(), request.getAuteurId());
 		GetLivreResponse response = new GetLivreResponse();
 		response.setLivre(livre);
 		return response;
@@ -109,7 +120,7 @@ public class SoapAdapter {
 	
 	public DeleteLivreResponse adapterDeleteLivre(DeleteLivre request)
 	{
-		boolean res = ws.deleteLivre(request.getId());
+		boolean res = ws.deleteLivre(request.getId(), request.getAuteurId());
 		DeleteLivreResponse response = new DeleteLivreResponse();
 		response.setIsDeleted(res);
 		return response;
@@ -118,7 +129,7 @@ public class SoapAdapter {
 
 	public UpdateLivreResponse adapterUpdateLivre(UpdateLivre request)
 	{
-		TLivre livre = ws.updateLivre(request.getTitre(), request.getPrix(), request.getDescription(), request.getId());
+		TLivre livre = ws.updateLivre(request.getId(), request.getTitre(), request.getPrix(), request.getDescription(), request.getAuteurId());
 		UpdateLivreResponse response = new UpdateLivreResponse();
 		response.setLivre(livre);
 		return response;

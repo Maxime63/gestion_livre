@@ -19,6 +19,7 @@ import com.gestion.livre.service.jaxws.DeleteAuteur;
 import com.gestion.livre.service.jaxws.DeleteLivre;
 import com.gestion.livre.service.jaxws.GetAllAuteur;
 import com.gestion.livre.service.jaxws.GetAllLivres;
+import com.gestion.livre.service.jaxws.GetAllLivresByAuteur;
 import com.gestion.livre.service.jaxws.GetAuteur;
 import com.gestion.livre.service.jaxws.GetLivre;
 import com.gestion.livre.service.jaxws.UpdateAuteur;
@@ -33,6 +34,7 @@ public class SoapHandler {
 	private static final QName UPDATE_AUTEUR_QNAME = new QName(NAMESPACE_URI, "updateAuteur");
 	private static final QName CREATE_LIVRE_QNAME = new QName(NAMESPACE_URI, "createLivre");
 	private static final QName GET_ALL_LIVRES_QNAME = new QName(NAMESPACE_URI, "getAllLivres");
+	private static final QName GET_ALL_LIVRES_BY_AUTEUR_QNAME = new QName(NAMESPACE_URI, "getAllLivresByAuteur");
 	private static final QName GET_LIVRE_QNAME = new QName(NAMESPACE_URI, "getLivre");
 	private static final QName DELETE_LIVRE_QNAME = new QName(NAMESPACE_URI, "deleteLivre");
 	private static final QName UPDATE_LIVRE_QNAME = new QName(NAMESPACE_URI, "updateLivre");
@@ -54,9 +56,6 @@ public class SoapHandler {
 			if(next instanceof SOAPElement){
 				SOAPElement soapElement = (SOAPElement) next;
 				QName qname = soapElement.getElementQName();
-				
-				System.out.println("reçu : " + qname);
-				System.out.println("vrai : " + GET_ALL_AUTEUR_QNAME);
 				
 				if(CREATE_AUTEUR_QNAME.equals(qname)){
 					response = appelerCreateAuteur(soapElement);
@@ -89,6 +88,11 @@ public class SoapHandler {
 				if(GET_ALL_LIVRES_QNAME.equals(qname))
 				{
 					response = appelerGetAllLivres(soapElement);
+					break;
+				}
+				if(GET_ALL_LIVRES_BY_AUTEUR_QNAME.equals(qname))
+				{
+					response = appelerGetAllLivresByAuteur(soapElement);
 					break;
 				}
 				if(GET_LIVRE_QNAME.equals(qname))
@@ -159,6 +163,11 @@ public class SoapHandler {
 	private Object appelerGetAllLivres(SOAPElement soapElement){
 		GetAllLivres getAllLivres = JAXB.unmarshal(new DOMSource(soapElement), GetAllLivres.class);
 		return adapter.adapterGetAllLivres(getAllLivres);
+	}
+	
+	private Object appelerGetAllLivresByAuteur(SOAPElement soapElement){
+		GetAllLivresByAuteur getAllLivresByAuteurr = JAXB.unmarshal(new DOMSource(soapElement), GetAllLivresByAuteur.class);
+		return adapter.adapterGetAllLivresByAuteur(getAllLivresByAuteurr);
 	}
 	
 	private Object appelerGetLivre(SOAPElement soapElement)
