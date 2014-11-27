@@ -11,44 +11,60 @@
 	<title>Gestion livre</title>
 </head>
 <body>
-	<div class="menu">
-		<a href="/getAllAuteur">Liste des auteurs</a><br/>
-		<a href="/getAllLivre">Liste des livres</a><br/>
-		<a href="/addAuteur">Ajouter un auteur</a>
-	</div>
-	<div class="contenu">
-		<%
-		List<TLivre> livres = (List<TLivre>) request.getAttribute(ConstanteMetier.LIVRES_LIST_PARAM); 
-		String auteur = livres.get(0).getAuteurNomPrenom();
-		String titre = "Livre de l'auteur " + auteur;
-		%>
-		<h1><% out.print(titre); %></h1>
-		<table>
-			<thead>
-				<tr>
-					<th>N°</th>
-					<th>Titre</th>
-					<th>Prix</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
+	<div class="page">
+		<div class="menu">
+			<h2>Menu général</h2>
+			<ul>
+				<li>
+					<a href="/getAllAuteur">Liste des auteurs</a><br/>
+				</li>
+				<li>
+					<a href="/getAllLivre">Liste des livres</a><br/>
+				</li>
+				<li>
+					<a href="/addAuteur">Ajouter un auteur</a>
+				</li>
+			</ul>
+			<h2>Menu livre</h2>
+			<ul>
+				<li>
+					<a href="/addLivre">Ajouter un livre</a><br/>
+				</li>
+			</ul>
+		</div>
+		<div class="contenu">
 			<%
-			int nbLivres=0;
-			for(TLivre livre  : livres){
+			List<TLivre> livres = (List<TLivre>) request.getAttribute(ConstanteMetier.LIVRES_LIST_PARAM); 
+			String auteur = livres.get(0).getAuteurNomPrenom();
+			String titre = "Livres de l'auteur " + auteur;
 			%>
-				<tr>
-					<td><% out.print(++nbLivres); %></td>
-					<td><% out.print(livre.getTitre()); %></td>
-					<td><% out.print(livre.getPrix()); %></td>
-					<td><% out.print(livre.getDescription()); %></td>
-					<td></td>
-				</tr>		
-			<%
-			}
-			%>
-			</tbody>
-		</table>
+			<h1><% out.print(titre); %></h1>
+			<table>
+				<thead>
+					<tr>
+						<th>N°</th>
+						<th>Titre</th>
+						<th>Prix</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+				int nbLivres=0;
+				for(TLivre livre  : livres){
+				%>
+					<tr>
+						<td><% out.print(++nbLivres); %></td>
+						<td><% out.print(livre.getTitre()); %></td>
+						<td><% out.print(livre.getPrix()); %></td>
+						<td><% out.print(livre.getDescription()); %></td>
+					</tr>		
+				<%
+				}
+				%>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

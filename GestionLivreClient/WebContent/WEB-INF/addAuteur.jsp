@@ -9,30 +9,54 @@
 	<title>Gestion livre</title>
 </head>
 <body>
-	<div class="menu">
-		<a href="/getAllAuteur">Liste des auteurs</a><br/>
-		<a href="/getAllLivre">Liste des livres</a><br/>
-		<a href="/addAuteur">Ajouter un auteur</a>
-	</div>
-	<div class="contenu">
-		<h1>Ajout d'un auteur</h1>
-		<form method="post" action="/addAuteur">
-			<table>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>">Nom</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>"/>*</td>
-				</tr>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>">Prénom</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>"/>*</td>
-				</tr>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>">Domicile</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>"/>*</td>
-				</tr>
-			</table>
-			<input type="submit" value="Ajouter"/>
-		</form>
+	<div class="page">
+		<div class="menu">
+			<h2>Menu général</h2>
+			<ul>
+				<li>
+					<a href="/getAllAuteur">Liste des auteurs</a><br/>
+				</li>
+				<li>
+					<a href="/getAllLivre">Liste des livres</a><br/>
+				</li>
+				<li>
+					<a href="/addAuteur">Ajouter un auteur</a>
+				</li>
+			</ul>
+		</div>
+		<div class="contenu">
+			<h1>Ajout d'un auteur</h1>
+			<div id="form-main">
+				<div id="form-div">
+					<form class="form" id="form1" method="post" action="/addAuteur">
+						<p class="name">
+							<input  name="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>" 
+									type="text" class="feedback-input" 
+									placeholder="Nom de l'auteur" 
+									id="name"/>
+						</p>
+						<p class="firstname">
+							<input 	name="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>" 
+									type="text" 
+									class="feedback-input" 
+									placeholder="Prénom de l'auteur" 
+									id="name" />
+						</p>
+						<p class="domicile">
+							<input 	name="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>" 
+									type="text" 
+									class="feedback-input" 
+									id="domicile" 
+									placeholder="Domicile" />
+						</p>
+						<div class="submit">
+							<input type="submit" value="Ajouter" id="button-blue"/>
+							<div class="ease"></div>
+						</div>
+					   </form>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

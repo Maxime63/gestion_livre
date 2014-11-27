@@ -87,8 +87,7 @@ public class AddAuteurServlet extends HttpServlet {
 		}
 	}
 
-	private SOAPMessage createSoapRequest(String nom, String prenom,
-			String domicile) throws SOAPException {
+	private SOAPMessage createSoapRequest(String nom, String prenom, String domicile) throws SOAPException {
 		MessageFactory messageFactory = MessageFactory.newInstance();
 		SOAPMessage soapMessage = messageFactory.createMessage();
 		SOAPPart soapPart = soapMessage.getSOAPPart();

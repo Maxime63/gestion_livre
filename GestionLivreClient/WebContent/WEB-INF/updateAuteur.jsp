@@ -10,38 +10,66 @@
 	<title>Gestion livre</title>
 </head>
 <body>
-	<div class="menu">
-		<a href="/getAllAuteur">Liste des auteurs</a><br/>
-		<a href="/getAllLivre">Liste des livres</a><br/>
-		<a href="/addAuteur">Ajouter un auteur</a>
-	</div>
-	<div class="contenu">
-		<% 
-		TAuteur auteur = (TAuteur) request.getAttribute(ConstanteMetier.AUTEUR_PARAM); 
-		String titre = "Modification de l'auteur " + auteur.getNom() + " " + auteur.getPrenom();
-		%>
-		<h1><% out.print(titre); %></h1>
-		<%String urlToUpdateAuteur = "/updateAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteur.getId(); %>
-		<form method="post" action="<% out.print(urlToUpdateAuteur); %>">
-			<table>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>">Nom</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>"
-										   value="<%out.print(auteur.getNom());%>"/>*</td>
-				</tr>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>">Prénom</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>"
-										   value="<%out.print(auteur.getPrenom());%>"/>*</td>
-				</tr>
-				<tr>
-					<td><label for="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>">Domicile</label></td>
-					<td><input type="text" name="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>"
-										   value="<%out.print(auteur.getDomicile());%>"/>*</td>
-				</tr>
-			</table>
-			<input type="submit" value="Ajouter"/>
-		</form>
+	<div class="page">
+		<div class="menu">
+			<h2>Menu général</h2>
+			<ul>
+				<li>
+					<a href="/getAllAuteur">Liste des auteurs</a><br/>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a href="/getAllLivre">Liste des livres</a><br/>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a href="/addAuteur">Ajouter un auteur</a>
+				</li>
+			</ul>
+		</div>
+		<div class="contenu">
+			<% 
+			TAuteur auteur = (TAuteur) request.getAttribute(ConstanteMetier.AUTEUR_PARAM); 
+			String titre = "Modification de l'auteur : " + auteur.getNom() + " " + auteur.getPrenom();
+			%>
+			<h1><% out.print(titre); %></h1>
+			<%String urlToUpdateAuteur = "/updateAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteur.getId(); %>
+			<div id="form-main">
+				<div id="form-div">
+					<form class="form" id="form1" method="post" action="<%out.print(urlToUpdateAuteur);%>">
+						<p class="name">
+							<input  name="<%out.print(ConstanteMetier.AUTEUR_LASTNAME_PARAM);%>" 
+									type="text" class="feedback-input"
+									value="<%out.print(auteur.getNom());%>" 
+									placeholder="Nom de l'auteur" 
+									id="name"/>
+						</p>
+						<p class="firstname">
+							<input 	name="<%out.print(ConstanteMetier.AUTEUR_FIRSTNAME_PARAM);%>" 
+									type="text" 
+									class="feedback-input" 
+									placeholder="Prénom de l'auteur" 
+									value="<%out.print(auteur.getPrenom());%>"
+									id="name" />
+						</p>
+						<p class="domicile">
+							<input 	name="<%out.print(ConstanteMetier.AUTEUR_HOME_PARAM);%>" 
+									type="text" 
+									class="feedback-input" 
+									id="domicile" 
+									value="<%out.print(auteur.getDomicile());%>"
+									placeholder="Domicile" />
+						</p>
+						<div class="submit">
+							<input type="submit" value="Modifier" id="button-blue"/>
+							<div class="ease"></div>
+						</div>
+					   </form>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

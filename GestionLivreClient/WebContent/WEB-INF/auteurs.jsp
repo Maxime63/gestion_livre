@@ -11,44 +11,50 @@
 	<title>Gestion livre</title>
 </head>
 <body>
-	<div class="menu">
-		<a href="/getAllAuteur">Liste des auteurs</a><br/>
-		<a href="/getAllLivre">Liste des livres</a><br/>
-		<a href="/addAuteur">Ajouter un auteur</a>
-	</div>
-	<div class="contenu">
-		<h1>Liste des auteurs</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>N°</th>
-					<th>Auteur</th>
-					<th>Domicile</th>
-				</tr>
-			</thead>
-			<tbody>
-		<%
-		List<TAuteur> auteurs = (List<TAuteur>) request.getAttribute(ConstanteMetier.AUTEURS_LIST_PARAM);
-	
-		int nbAuteur=0;
-		for(TAuteur auteur  : auteurs){
-		%>
-				<tr>
-					<td><% out.print(++nbAuteur); %></td>
-					<td>
-						<%
-							String url = "/getAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteur.getId();
-						%>
-						<a href="<% out.print(url); %>"><% out.print(auteur.getNom()); %> <% out.print(auteur.getPrenom()); %></a>
-					</td>
-					<td><% out.print(auteur.getDomicile()); %></td>
-					<td></td>
-				</tr>		
-		<%
-		}
-		%>
-			</tbody>
-		</table>
+	<div class="page">
+		<div class="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li>
+					<a href="/getAllAuteur">Liste des auteurs</a><br/>
+				</li>
+				<li>
+					<a href="/getAllLivre">Liste des livres</a><br/>
+				</li>
+				<li>
+					<a href="/addAuteur">Ajouter un auteur</a>
+				</li>
+			</ul>
+		</div>
+		<div class="contenu">
+			<h1>Liste des auteurs</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>N°</th>
+						<th>Auteur</th>
+						<th>Domicile</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+				List<TAuteur> auteurs = (List<TAuteur>) request.getAttribute(ConstanteMetier.AUTEURS_LIST_PARAM);
+			
+				int nbAuteur=0;
+				for(TAuteur auteur  : auteurs){
+				%>
+					<%String url = "/getAuteur?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteur.getId();%>
+					<tr>
+						<td><a href="<% out.print(url); %>"><% out.print(++nbAuteur); %></a></td>
+						<td><a href="<% out.print(url); %>"><% out.print(auteur.getNom()); %> <% out.print(auteur.getPrenom()); %></a></td>
+						<td><a href="<% out.print(url); %>"><% out.print(auteur.getDomicile()); %></a></td>
+					</tr>
+				<%
+				}
+				%>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
