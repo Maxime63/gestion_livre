@@ -28,15 +28,28 @@
 			<h2>Menu livre</h2>
 			<ul>
 				<li>
-					<a href="/addLivre">Ajouter un livre</a><br/>
+					<% 
+					Long auteurId = (Long) request.getAttribute(ConstanteMetier.AUTEUR_ID_PARAM);
+					String addLivreUrl = "/addLivre?" + ConstanteMetier.AUTEUR_ID_PARAM + "=" + auteurId.longValue(); 
+					
+					%>
+					<a href="<% out.print(addLivreUrl);%>">Ajouter un livre</a><br/>
 				</li>
 			</ul>
 		</div>
 		<div class="contenu">
 			<%
 			List<TLivre> livres = (List<TLivre>) request.getAttribute(ConstanteMetier.LIVRES_LIST_PARAM); 
-			String auteur = livres.get(0).getAuteurNomPrenom();
-			String titre = "Livres de l'auteur " + auteur;
+			
+			String titre = null;
+			
+			if(livres == null || (livres != null && livres.isEmpty())){
+				titre = "Aucun livre pour cet auteur";
+			}
+			else{
+				String auteur = livres.get(0).getAuteurNomPrenom();
+				titre = "Livres de l'auteur " + auteur;				
+			}
 			%>
 			<h1><% out.print(titre); %></h1>
 			<table>

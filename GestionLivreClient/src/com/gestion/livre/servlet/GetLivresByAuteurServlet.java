@@ -58,6 +58,7 @@ public class GetLivresByAuteurServlet extends HttpServlet {
 				List<TLivre> livres = getResponse(soapResponse);
 				
 				request.setAttribute(ConstanteMetier.LIVRES_LIST_PARAM, livres);
+				request.setAttribute(ConstanteMetier.AUTEUR_ID_PARAM, auteurId);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/livresByAuteur.jsp").forward(request, response);
 				
 			} catch (UnsupportedOperationException | SOAPException e) {

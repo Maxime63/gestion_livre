@@ -41,15 +41,19 @@ public class GetAllAuteurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
+			//Création de la requête
 			SOAPMessage soapMessage = createRequest();
 			
+			//Envoie de la requête au server et récupération de la réponse
 			SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
             SOAPConnection soapConnection = soapConnectionFactory.createConnection();
 			SOAPMessage soapResponse = soapConnection.call(soapMessage, ConstanteMetier.URL_WS);
 
+			//Traitement de la réponse
 			List<TAuteur> auteurs = getAllAuteur(soapResponse);
+			
+			//Affichage de la liste des auteurs
 			req.setAttribute(ConstanteMetier.AUTEURS_LIST_PARAM, auteurs);
-						
 			this.getServletContext().getRequestDispatcher("/WEB-INF/auteurs.jsp").forward(req, resp);
 		} catch (SOAPException e) {
 			//TODO Gérer les erreurs internes !
